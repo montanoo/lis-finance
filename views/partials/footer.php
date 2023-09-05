@@ -1,10 +1,10 @@
-  <footer>
-    esto deberia estar abajo
-  </footer>
+<footer>
+  esto deberia estar abajo
+</footer>
 
-  </body>
-  <script>
+</body>
+<script>
 
-  </script>
+</script>
 
-  </html>
+</html>

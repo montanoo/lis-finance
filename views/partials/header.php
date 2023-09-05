@@ -28,6 +28,12 @@
 </head>
 
 <body class="font-inter">
-  <header class="text-xl">
-    <a href="dashboard.php">Dashboard</a>
+  <header class="bg-black/50 fixed top-0 w-full z-20">
+    <div class="max-w-[1300px] px-4 mx-auto py-4 flex justify-between items-center">
+      <a href="index.php" class="font-bold text-white text-lg">finance.</a>
+      <div class="flex gap-3 items-center max-h-[2rem] overflow-hidden">
+        <a href="" class="text-white hover:border-b transition-all px-2 py-1 hover:font-bold">Log In</a>
+        <a href="" class="text-white hover:border-b transition-all px-2 py-1 hover:font-bold">Sign Up</a>
+      </div>
+    </div>
   </header>
