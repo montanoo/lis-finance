@@ -2,6 +2,9 @@
 include_once('views/partials/header.php');
 define('BASEPATH', true); //access connection script if you omit this line file will be blank
 include './controllers/database/db.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if (isset($_POST['submit'])) {
     // try {
@@ -37,6 +40,7 @@ if (isset($_POST['submit'])) {
         if ($validPassword) {
             //Provide the user with a login session.
             $_SESSION['user'] = $username;
+            $_SESSION['user_id'] = $user['id'];
             echo '<script>window.location.replace("dashboard.php");</script>';
             exit;
         } else {
