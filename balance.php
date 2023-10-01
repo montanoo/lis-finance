@@ -1,6 +1,10 @@
 <?php
 include_once('views/partials/header.php');
 
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+}
+
 define('BASEPATH', true); //access connection script if you omit this line file will be blank
 include './controllers/database/db.php';
 $dsn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
@@ -22,7 +26,7 @@ $outs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main class="min-h-[85vh] py-24 max-w-[1300px] flex justify-center flex-col gap-4 w-full items-center mx-auto px-4">
-    <div class="grid grid-cols-2 gap-2">
+    <div class="grid md:grid-cols-2 gap-2">
         <!-- Table 1 -->
         <div class="w-full">
             <h2 class="text-sm font-bold">Entradas</h2>
@@ -100,7 +104,7 @@ $outs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <canvas id="graficaPastel" class="max-h-[20vh]"></canvas>
 
-    <button id="download-pdf">Download PDF</button>
+    <button id="download-pdf">Descargar PDF</button>
 
     <?php include_once('views/partials/partials_menu.php') ?>
 </main>
@@ -135,20 +139,8 @@ $outs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#download-pdf").on("click", function() {
-            // Define your PDF content
-            var docDefinition = {
-                content: [
-                    'Hello, this is a sample PDF generated using pdfmake.'
-                ]
-            };
-
-            // Create a PDF document
-            var pdfDoc = pdfmake.createPdf(docDefinition);
-
-            // Download the PDF
-            pdfDoc.download('document.pdf');
-        });
-    });
+    btn = document.getElementById("download-pdf")
+    btn.addEventListener('click', () => {
+        window.print();
+    })
 </script>
