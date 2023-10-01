@@ -16,7 +16,7 @@ error_reporting(E_ALL);
     $dsn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
     $dsn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $pdo->prepare("SELECT * FROM entradas WHERE user_id = :user_id");
+    $stmt = $pdo->prepare("SELECT * FROM salidas WHERE user_id = :user_id");
 
     // Bind parameters
     $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
@@ -44,8 +44,8 @@ error_reporting(E_ALL);
 
     foreach ($values as $row) {
         echo '<tr>
-                <td class="px-6 py-4 whitespace-no-wrap">' . $row['tipo_entrada'] . '</td>
-                <td class="px-6 py-4 whitespace-no-wrap text-green-700">+' . $row['monto'] . '</td>
+                <td class="px-6 py-4 whitespace-no-wrap">' . $row['tipo_salida'] . '</td>
+                <td class="px-6 py-4 whitespace-no-wrap text-red-500"> -' . $row['monto'] . '</td>
                 <td class="px-6 py-4 whitespace-no-wrap">' . $row['fecha'] . '</td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <img src="' . $row['nombre_archivo'] . '" data-image-src="' . $row['nombre_archivo'] . '" alt="Factura" class="w-16 h-16 clickable-image">

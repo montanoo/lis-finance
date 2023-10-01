@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
 
             if ($stmt->execute()) {
-                echo '<script>alert("New account created.")</script>';
+                // echo '<script>alert("New account created.")</script>';
                 //redirect to another page
                 echo '<script>window.location.replace("index.php")</script>';
             } else {
@@ -49,13 +49,25 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<main class="py-24">
-    <form action="signup.php" method="post">
-        <input type="text" required="required" name="username" placeholder="Username">
-        <input required="required" type="email" name="email" placeholder="Email">
-        <input required="required" type="password" name="password" placeholder="Password">
-        <button name="submit" type="submit">register</button>
-    </form>
+<main class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md w-96">
+        <h2 class="text-2xl font-semibold mb-4">Register</h2>
+        <form action="signup.php" method="post">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input type="text" name="username" id="username" class="border rounded-lg px-3 py-2 w-full focus:outline-none focus:border-blue-500" placeholder="Username" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" name="email" id="email" class="border rounded-lg px-3 py-2 w-full focus:outline-none focus:border-blue-500" placeholder="Email" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" name="password" id="password" class="border rounded-lg px-3 py-2 w-full focus:outline-none focus:border-blue-500" placeholder="Password" required>
+            </div>
+            <button name="submit" type="submit" class="bg-blue-500 text-white rounded-lg px-4 py-2 w-full hover:bg-blue-600 transition duration-200">Register</button>
+        </form>
+    </div>
 </main>
 
 <?php
